@@ -1,0 +1,31 @@
+RewriteEngine on
+Options +FollowSymlinks
+RewriteBase /
+
+RewriteRule ^Games/art([0-9]*)$ /index.php?art_id=$1&cat=Games [L]
+RewriteRule ^Games/([a-z,A-Z]*)/page([0-9]*)$ /index.php?cat=Games&subcat=$1&page=$2 [L]
+RewriteRule ^Games/([a-z,A-Z]*)$ /index.php?cat=Games&subcat=$1 [L]
+RewriteRule ^Games/page([0-9]*)$ /index.php?cat=Games&page=$1 [L]
+RewriteRule ^Games$ /index.php?cat=Games [L]
+
+RewriteRule ^Programs/art([0-9].*)$ /index.php?art_id=$1&cat=Programs [L]
+RewriteRule ^Programs/([a-z,A-Z]*)/page([0-9]*)$ /index.php?cat=Programs&subcat=$1&page=$2 [L]
+RewriteRule ^Programs/([a-z,A-Z]*)$ /index.php?cat=Programs&subcat=$1 [L]
+RewriteRule ^Programs/page([0-9]*)$ /index.php?cat=Programs&page=$1 [L]
+RewriteRule ^Programs$ /index.php?cat=Programs [L]
+
+RewriteRule ^Wpapers/art([0-9].*)$ /index.php?art_id=$1&cat=Wpapers [L]
+RewriteRule ^Wpapers/([a-z,A-Z]*)/page([0-9]*)$ /index.php?cat=Wpapers&subcat=$1&page=$2 [L]
+RewriteRule ^Wpapers/([a-z,A-Z]*)$ /index.php?cat=Wpapers&subcat=$1 [L]
+RewriteRule ^Wpapers/page([0-9]*)$ /index.php?cat=Wpapers&page=$1 [L]
+RewriteRule ^Wpapers$ /index.php?cat=Wpapers [L]
+
+RewriteRule ^Books/art([0-9]*)$ /index.php?art_id=$1&cat=Books [L]
+RewriteRule ^Books/([a-z,A-Z]*)/page([0-9]*)$ /index.php?cat=Books&subcat=$1&page=$2 [L]
+RewriteRule ^Books/([a-z,A-Z]*)$ /index.php?cat=Books&subcat=$1 [L]
+RewriteRule ^Books/page([0-9]*)$ /index.php?cat=Books&page=$1 [L]
+RewriteRule ^Books$ /index.php?cat=Books [L]
+
+RewriteRule ^page([0-9]*)$ /index.php?page=$1 [L]
+ErrorDocument 404 /index.php?error=1
+AddDefaultCharset UTF-8

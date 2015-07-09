@@ -1,0 +1,38 @@
+<?php
+    session_start();
+    include ("bd.php");
+ ?>
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.rating.css" />
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+
+</head>
+<body>
+	
+	<div class="user_pr">
+		<div class="up_ava">
+			<img src="admin/image/no-avatar.png">
+		</div>
+		<div class="pr_info">
+			<ul>
+				<li><?php
+					if(is_null($_SESSION['id'])){
+				printf("<li><span>%s</span>"
+        ,$_SESSION['login']);}?></li>
+				<li>email</li>
+				<li>location</li>
+				<li>Your comments</li>
+				<li>Your android device</li>
+				<li>Your apps</li>			
+			</ul>
+			<input type="button" name="b_profile" value="edit profile"> 
+		</div>
+	</div>
+</body>
+</html>

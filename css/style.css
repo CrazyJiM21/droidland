@@ -1,0 +1,193 @@
+body{
+  background: #eee;
+  font: 14px  Roboto,Arial, Helvetica, sans-serif;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  color: #444;
+}
+@font-face {
+    font-family: Roboto; /* Имя шрифта */
+    src: url(fonts/Roboto.ttf); /* Путь к файлу со шрифтом */
+}
+#signup, #loginform {
+     width: 404px;
+     padding-bottom: 2px;
+     display:none;
+     background: #f4f4f4;
+     border-radius: 5px;
+     -moz-border-radius: 5px; 
+     -webkit-border-radius: 5px;
+     box-shadow: 0px 0px 4px rgba(0,0,0,0.7); 
+     -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7); 
+     -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
+}
+
+#signup-header { 
+  background: #fff; 
+  padding: 18px 18px 14px 18px; 
+  border-bottom: 1px solid #CCC; 
+  border-top-left-radius: 5px; 
+  -moz-border-radius-topleft: 5px; 
+  -webkit-border-top-left-radius: 5px; 
+  border-top-right-radius: 5px; 
+  -moz-border-radius-topright: 5px; 
+  -webkit-border-top-right-radius: 5px; 
+}
+
+#signup-header h2 { 
+  color: #444; 
+  font-size: 2em; 
+  font-weight: 700; 
+  margin-bottom: 3px; 
+}
+#signup-header  p { color: #444; font-size: 1.3em; margin: 0; text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5); text-shadow: none; }
+
+#signup .txt-fld { position: relative; width: 364px; padding: 14px 20px; border-bottom: 1px solid #EEE; text-align: right; }
+#loginform .txt-fld { position: relative; width: 364px; padding: 14px 20px; border-bottom: 1px solid #EEE; text-align: right; }
+#signup .btn-fld { width: 254px; overflow: hidden; padding: 12px 20px 12px 130px; }
+#loginform .btn-fld { width: 254px; overflow: hidden; padding: 12px 20px 12px 130px; }
+
+#signup .txt-fld label { display: block; float: left; width: 90px; padding-top: 8px; color: #222; font-size: 1.3em; text-align: left;  }
+#loginform .txt-fld label { display: block; float: left; width: 90px; padding-top: 8px; color: #222; font-size: 1.3em; text-align: left;  }
+#signup .txt-fld input { width: 244px; padding: 8px; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; font-size: 1.2em; color: #222; background: #F7F7F7; font-family: "Helvetica Neue"; outline: none; border-top: 1px solid #CCC; border-left: 1px solid #CCC; border-right: 1px solid #E7E6E6; border-bottom: 1px solid #E7E6E6; }
+#signup .txt-fld .input { width: 244px; padding: 8px; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; font-size: 1.2em; color: #222; background: #F7F7F7; font-family: "Helvetica Neue"; outline: none; border-top: 1px solid #CCC; border-left: 1px solid #CCC; border-right: 1px solid #E7E6E6; border-bottom: 1px solid #E7E6E6; }
+#loginform .txt-fld input { width: 244px; padding: 8px; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; font-size: 1.2em; color: #222; background: #F7F7F7; font-family: "Helvetica Neue"; outline: none; border-top: 1px solid #CCC; border-left: 1px solid #CCC; border-right: 1px solid #E7E6E6; border-bottom: 1px solid #E7E6E6; }
+#signup .txt-fld input.good_input { background: #f7f7f7 url(../images/good.png) 236px center no-repeat; }
+#loginform .txt-fld input.good_input { background: #f7f7f7 url(../images/good.png) 236px center no-repeat; }
+#signup .txt-fld input.error_input { background: #FDE0E0; }
+#loginform .txt-fld input.error_input { background: #FDE0E0; }
+
+
+
+p.error { position: absolute; bottom: 48px; right: 20px; width: 262px; color: #FFF; font-size: 1.1em; padding-bottom: 5px; background: url(img/error-arw.png) 20px bottom no-repeat; text-align: left; margin: 0; text-shadow: none; }
+p.error span { display: inline-block; background: #D43636; padding: 6px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;  }
+.txt-fld input:focus, .txt-fld textarea:focus { background-color: #FAF9DC; }
+        
+button {
+	float: right;
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+	background: #fc3a67; 
+	border: none;
+  width: auto;
+  overflow: visible;
+  font-size: 1.4em;
+  color: #FFF;
+ padding: 7px 10px;  border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; font-weight: bold; text-shadow: 0 1px 0 rgba(0,0,0,0.4);}
+
+
+.thumbs {
+   margin: 40px auto;
+  /* width: 80%; */
+  /* height: 250px; */
+  background: #fff;
+  margin-bottom: 15px;
+  /* margin-top: 150px; */
+  overflow: auto;
+  clear: both;
+  border: solid 2px;
+  border-color: #fff;
+  box-shadow: inset 0px 2px 3px rgba(0,0,0,0.2);
+}
+
+.thumbs a{
+  margin-left: 4px;
+
+}
+.thumbs_pics{
+  padding-top: 5px; 
+  text-align: center;
+}
+
+
+
+/* стили категорий на главной главной странице*/
+
+
+
+.main_cat{
+  margin-top: 10px;
+  background:#fff;
+  width: 840px;
+  height: 640px;
+  margin-left: 50px;
+ }
+.main_cat a{
+  color:#fff;
+  font-size: 40px;
+  display: block;
+}
+.games{
+  background: #49c0f0; 
+  float: left;
+  opacity:1; 
+  transition:border-radius 1s 3s, opacity 2s 3s, background 2s 4s; 
+}
+.programs{
+  float: right;
+  background: #ff5647; 
+  opacity:1; 
+  transition:border-radius 1s 3s, opacity 2s 3s, background 2s 4s;
+}
+.wpapers{
+  float: left;
+  background: #b6e026; 
+  opacity:1; 
+  transition:border-radius 1s 3s, opacity 2s 3s, background 2s 4s;
+}
+.ringtones{
+  float: right;
+  background: #ff7400;
+  opacity:1; 
+  transition:border-radius 1s 3s, opacity 2s 3s, background 2s 4s;
+}
+.t_a, .main_cat{
+  text-align: center;
+}
+.w_h, .games, .programs, .wpapers, .ringtones{
+  width: 380px;
+  line-height: 300px;
+  margin: 10px;
+}
+.games:hover, .ringtones:hover, .programs:hover, .wpapers:hover{
+  border-radius:45px; -moz-border-radius:45px; -o-border-radius:45px; -webkit-border-radius:45px; 
+  opacity:0.9; 
+  transition:all 1s 0s;  
+}
+.b_sh{
+  box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+}
+.t_sh{
+  text-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+}
+.b3r, .ringtones, .wpapers, .programs, .games{
+  border-radius: 5px; -moz-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px;
+}
+.user_pr{
+  background: #ddd;
+  
+}
+.up_ava{
+  width: 150px;
+  height: 150px;
+  background: #ccc;
+  float: left;
+  margin: 10px;
+  padding: 2px;
+}
+.pr_info{
+  width: 40%;
+  float: left;
+  background: #f4f4f4;
+  margin: 10px 5px; 
+  padding: 10px;
+}
+.pr_info ul{
+  list-style: none;
+}
+.pr_info ul li{
+  margin: 5px;
+}
+.pr_info ul li span{
+  color: #444;
+  font-size: 1.5em;
+  font-weight: bold;
+}
