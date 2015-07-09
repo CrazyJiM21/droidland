@@ -1,41 +1,33 @@
 <?php
-	$count_on_page = 20;
-    $start_count_art = (empty($_GET['page']))?0:((intval($_GET['page'])-1)*$count_on_page);
-    $sql = sprintf("SELECT SQL_CALC_FOUND_ROWS * FROM articles ORDER BY id_art DESC LIMIT %s, %s", $start_count_art, $count_on_page);
-    $result1 = mysql_query($sql,$db);
-    $articles = mysql_fetch_array($result1);
     $result_found_rows = mysql_query("SELECT FOUND_ROWS() as `count`", $db);
 	$count = mysql_fetch_assoc($result_found_rows);
-    if (!empty($articles['id_art'])) {
-        do {
-            $content = $articles['content'];
-            $headline = $articles['headline'];
-            $query = sprintf("SELECT * FROM ratings WHERE id = %s", $articles['id_art']);
+    if (!empty($articles)) {
+        foreach ($articles as $article) {
+            $content = $article['content'];
+            $headline = $article['headline'];
+            $query = sprintf("SELECT * FROM ratings WHERE id = %s", $article['id_art']);
             $result2 = mysql_query($query,$db);
             $rating = mysql_fetch_array($result2);
-            printf('
-			<div class="back b3radius">
-			<a href="%s/art%s">	
-			<div id="c_block">
-			<div class="img b3radius">
-			<img width="100%%" src="%s">
-			</div>
-			<div class="c_name_header"><h2>%s</h2>
-			</div>
-			<div class="c_f">
-			<div class="rating1"><span>Rating<br></span>%s / 5</div>
-			</div>
-			<div class="company">
-			<span>%s</span>
-			</div>
-			
-			</div>
-			</a>
-			</div>
-			', $articles['category'], $articles['id_art'], $articles['image'],  $articles['headline'], $rating['total_value'], $articles['name_company']
-			);
+            echo '
+			    <div class="back b3radius">
+			        <a href="' . $article['category'] . '/art' . $article['id_art'] . '">
+			            <div id="c_block">
+			                <div class="img b3radius">
+			                    <img width="100%%" src="' . $article['image'] . '">
+			                </div>
+			                <div class="c_name_header"><h2>'. $article['headline'] . ' </h2>
+			                </div>
+			                <div class="c_f">
+			                <div class="rating1"><span>Rating<br></span> ' . $rating['total_value'] . ' / 5</div>
+			                </div>
+			                <div class="company">
+			                    <span>' . $article['name_company'] . '</span>
+			                </div>
+			            </div>
+			        </a>
+			    </div>
+			';
 		}
-        while($articles = mysql_fetch_array($result1));
 		echo "<div class='pagination'>";
 		
 		// Крутой ПАГИНАТОР	

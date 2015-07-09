@@ -1,9 +1,8 @@
 <?php
 	session_start();
-    require __DIR__ . '/functions/sql.php';
-    require __DIR__ . '/controllers/ArticlesController.php';
+    require __DIR__ . '/models/Articles.php';
 
-    getAllArticles();
+    $articles = Articles_getAll();
 
     include __DIR__ . '/views/index.php';
 
