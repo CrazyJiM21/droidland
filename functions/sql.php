@@ -2,8 +2,8 @@
 
 function Sql_connect()
 {
-    mysql_connect ('localhost','root','');
-    mysql_select_db ('droidland');
+    mysql_connect('localhost','root','');
+    mysql_select_db('droidland');
     mysql_query("SET NAMES utf8");
 }
 

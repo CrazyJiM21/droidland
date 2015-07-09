@@ -1,7 +1,7 @@
 <?php
-	$count_on_page = 20;
-    $start_count_art = (empty($_GET['page']))?0:((intval($_GET['page'])-1)*$count_on_page);
-	$query = sprintf("SELECT SQL_CALC_FOUND_ROWS * FROM articles WHERE category='%s' ORDER BY id_art DESC LIMIT %s, %s",$_GET['cat'],$start_count_art, $count_on_page);
+	$ARTICLES_ON_PAGE = 20;
+    $start_count_art = (empty($_GET['page']))?0:((intval($_GET['page'])-1)*$ARTICLES_ON_PAGE);
+	$query = sprintf("SELECT SQL_CALC_FOUND_ROWS * FROM articles WHERE category='%s' ORDER BY id_art DESC LIMIT %s, %s",$_GET['cat'],$start_count_art, $ARTICLES_ON_PAGE);
     $result1 = mysql_query($query,$db);
     $articles = mysql_fetch_array($result1);
 	if (!empty($articles['id_art'])) {	
@@ -39,8 +39,8 @@
 		while($articles = mysql_fetch_array($result1));
 		$curr = (empty($_GET['page']) ? 1 : intval($_GET['page']));
 		echo "<div class='pagination'>";
-		if (intval($count['count'])%$count_on_page != 0){
-			for ($i=0; $i<=intval($count['count'])/$count_on_page; $i++){
+		if (intval($count['count'])%$ARTICLES_ON_PAGE != 0){
+			for ($i=0; $i<=intval($count['count'])/$ARTICLES_ON_PAGE; $i++){
 				if($i+1 == $curr)
 				printf("<a class='curr_page' href='%s/page%s'>%s</a>",$_GET['cat'], $i+1, $i+1);
 				else
@@ -48,7 +48,7 @@
 			}
 		}
 		else{
-			for ($i=0; $i<intval($count['count'])/$count_on_page; $i++){
+			for ($i=0; $i<intval($count['count'])/$ARTICLES_ON_PAGE; $i++){
 				if($i+1 == $curr)
 				printf("<a class='curr_page' href='%s/page%s'>%s</a>",$_GET['cat'], $i+1, $i+1);
 				else

@@ -1,5 +1,4 @@
 <?php
-require __DIR__ . '/../functions/sql.php';
 
 function Articles_getAll()
 {
@@ -7,10 +6,15 @@ function Articles_getAll()
     return Sql_query($sql);
 }
 
-function Articles_getAllPaginated($count_on_page, $page = 0)
+function Articles_getPart($page = 0)
 {
-    $count_on_page = 20;
-    $start_count_art = (!$page?0:((intval($page)-1)*$count_on_page));
-    $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM articles ORDER BY id_art DESC LIMIT " . $start_count_art . ", " . $count_on_page;
+    $start_count_art = (!$page?0:((intval($page)-1)*ARTICLES_ON_PAGE));
+    $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM articles ORDER BY id_art DESC LIMIT " . $start_count_art . ", " . ARTICLES_ON_PAGE;
     return Sql_query($sql);
+}
+
+function Articles_getByID($id)
+{
+    $sql = "SELECT * FROM articles WHERE id_art = " . $id;
+    return Sql_query($sql)[0];
 }
