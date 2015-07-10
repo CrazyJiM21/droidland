@@ -35,14 +35,12 @@
     <script type="text/javascript">
 
         $(function () {
-
             $('#rating_3').rating({
                 fx: 'float',
                 image: 'images/stars.png',
                 loader: 'images/ajax-loader.gif',
                 minimal: 0.6,
-                url: 'vote.php',
-
+                url: 'vote.php'
             });
         })
     </script>
