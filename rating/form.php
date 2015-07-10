@@ -1,12 +1,11 @@
 <?php
 function rating_bar($id, $units = '', $static = '')
 {
-		require('confrate.php');
+        Sql_connect();
 		$rating_tableName = 'ratings';
 		$rating_path_db = '';
 		$rating_path_rpc = '';
 		$rating_unitwidth = 30;
-		$rating_conn = mysql_connect($database_host, $database_username, $database_password) or die('Error connecting to mysql');
 		$ip = $_SERVER['REMOTE_ADDR'];
 		if (!$units)
 		{
@@ -16,10 +15,10 @@ function rating_bar($id, $units = '', $static = '')
 		{
 				$static = false;
 		}
-		$query = mysql_query("SELECT total_votes, total_value, used_ips FROM ".$database_name.".".$rating_tableName." WHERE id='".$id."' ") or die(" Error: " . mysql_error());
+		$query = mysql_query("SELECT total_votes, total_value, used_ips FROM " . $rating_tableName . " WHERE id='".$id."' ") or die(" Error: " . mysql_error());
 		if (mysql_num_rows($query) == 0)
 		{
-				$sql = "INSERT INTO ".$database_name.".".$rating_tableName." (`id`,`total_votes`, `total_value`, `used_ips`) VALUES ('".$id."', '0', '0', '')";
+				$sql = "INSERT INTO " . $rating_tableName . " (`id`,`total_votes`, `total_value`, `used_ips`) VALUES ('".$id."', '0', '0', '')";
 				$result = mysql_query($sql);
 		}
 		$numbers = mysql_fetch_assoc($query);
@@ -33,7 +32,7 @@ function rating_bar($id, $units = '', $static = '')
 		}
 		$current_rating = $numbers['total_value'];
 		$tense = ($count == 1) ? "vote" : "votes";
-		$voted = mysql_num_rows(mysql_query("SELECT used_ips FROM ".$database_name.".".$rating_tableName." WHERE used_ips LIKE '%" . $ip . "%' AND id='" . $id . "' "));
+		$voted = mysql_num_rows(mysql_query("SELECT used_ips FROM " . $rating_tableName . " WHERE used_ips LIKE '%" . $ip . "%' AND id='" . $id . "' "));
 		$rating_width = @number_format($current_rating / $count, 2) * $rating_unitwidth;
 		$rating1 = @number_format($current_rating / $count, 1);
 		$rating2 = @number_format($current_rating / $count, 2);

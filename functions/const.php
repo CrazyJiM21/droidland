@@ -8,4 +8,5 @@ define('IMAGES_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/images');
 define('CSS_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/css');
 
 
-define('ARTICLES_ON_PAGE', 10);
+define('ARTICLES_ON_PAGE', 20);
+define('RELATED_ARTICLES', 6);
