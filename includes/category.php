@@ -38,7 +38,8 @@
 		}
 		while($articles = mysql_fetch_array($result1));
 		$curr = (empty($_GET['page']) ? 1 : intval($_GET['page']));
-		echo "<div class='pagination'>";
+
+        echo "<div class='pagination'>";
 		if (intval($count['count'])%$ARTICLES_ON_PAGE != 0){
 			for ($i=0; $i<=intval($count['count'])/$ARTICLES_ON_PAGE; $i++){
 				if($i+1 == $curr)

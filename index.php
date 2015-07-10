@@ -1,15 +1,13 @@
 <?php
 	session_start();
-    require __DIR__ . '/functions/lib.php';
+    require __DIR__ . '/functions/const.php';
     require MODELS_ROOT . '/Articles.php';
     require FUNCTIONS_ROOT . '/sql.php';
 
     $params = [];
     parse_str($_SERVER['QUERY_STRING'], $params);
-    if (!empty($params['page'])) {
-        $articles = Articles_getPart($params['page']);
-    } else {
-        $articles = Articles_getPart();
-    }
+
+    $articles = Articles_getPart(!empty($params['page']) ? $params['page'] : 0);
+
     include VIEWS_ROOT . '/index.php';
 ?>

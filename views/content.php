@@ -51,9 +51,7 @@
 	<body>
 		<div class="content">
 			<?php
-				require("admin/bd.php");
-				$result = mysql_query("SELECT * FROM users",$db);
-				$users = mysql_fetch_array($result);
+				//$users = Users_getAll();
 				if(!empty($_GET['error']) && $_GET['error'] == 1){
 					echo "<h1>404 PAGE NOT FOUND!</h1>";
 				}

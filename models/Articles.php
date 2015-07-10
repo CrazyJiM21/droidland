@@ -6,10 +6,23 @@ function Articles_getAll()
     return Sql_query($sql);
 }
 
+function Articles_getAllCategory($category)
+{
+    $sql = "SELECT * FROM articles WHERE category = '" . $category . "' ORDER BY id_art DESC";
+    return Sql_query($sql);
+}
+
 function Articles_getPart($page = 0)
 {
     $start_count_art = (!$page?0:((intval($page)-1)*ARTICLES_ON_PAGE));
     $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM articles ORDER BY id_art DESC LIMIT " . $start_count_art . ", " . ARTICLES_ON_PAGE;
+    return Sql_query($sql);
+}
+
+function Articles_getPartCategory($category, $page = 0)
+{
+    $start_count_art = (!$page?0:((intval($page)-1)*ARTICLES_ON_PAGE));
+    $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM articles WHERE category = '" . $category . "' ORDER BY id_art DESC LIMIT " . $start_count_art . ", " . ARTICLES_ON_PAGE;
     return Sql_query($sql);
 }
 
