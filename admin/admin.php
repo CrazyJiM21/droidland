@@ -1,7 +1,13 @@
 <?php
-    session_start();
-    include ("bd.php");
- ?>
+
+session_start();
+require __DIR__ . '/../functions/const.php';
+require FUNCTIONS_ROOT . '/sql.php';
+require MODELS_ROOT . '/Phones.php';
+require MODELS_ROOT . '/Categories.php';
+Sql_connect();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,16 +99,13 @@ HERE;
     <label>Version of Android:<br></label>
     <select size="1" name="version">
 <?php
-    $result = mysql_query("SELECT phone_android FROM phone GROUP BY phone_android",$db);
-    $versions = mysql_fetch_array($result);
-    if (!empty($versions['phone_android'])) {
-        do {
-            $version = $versions['phone_android'];
-            printf("
-                 <option value='%s'>%s</option>
-                 ", $version, $version);
+    $versions = Phones_getAllVersions();
+    if (!empty($versions)) {
+        foreach($versions as $version) {;
+            echo '
+                <option value="' . $version['phone_android'] . '">' . $version['phone_android'] . '</option>
+            ';
         }
-        while($versions = mysql_fetch_array($result));
     }
 ?>
     </select>
@@ -115,17 +118,14 @@ HERE;
     <label>Category:<br></label>
     <select size="1" name="category" onchange="showUser(this.value)">
 <?php
-    $result = mysql_query("SELECT * FROM categories",$db);
-    $categories = mysql_fetch_array($result);
+    $categories = Categories_getAll();
 	echo "<option selected disabled>Choose category...</option>";
-    if (!empty($categories['id_cat'])) {
-        do {
-            $name = $categories['name'];
-            printf("
-                 <option value='%s'>%s</option>
-                 ", $categories['translit'], $categories['name']);
+    if (!empty($categories)) {
+        foreach ($categories as $category) {
+            echo '
+                 <option value="' . $category['translit'] . '">' . $category['name'] . '</option>
+            ';
         }
-        while($categories = mysql_fetch_array($result));
     }
 ?>
     </select>

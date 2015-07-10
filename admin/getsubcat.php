@@ -1,18 +1,17 @@
 <?php
+require __DIR__ . '/../functions/const.php';
+require FUNCTIONS_ROOT . '/sql.php';
+require MODELS_ROOT . '/Subcategories.php';
+
 	$cat = $_GET['cat'];
 
-	include ("bd.php");
-	$sql="SELECT * FROM sub_category WHERE super_cat = '".$cat."'";
-	$result = mysql_query($sql, $db);
+	$subcats = Subcategories_getBySuperCat($cat);
 
 	echo "<label>Subcategory:<br></label>";
 	echo "<select size='1' name='sub_category'>";
 	echo "<option selected disabled>Choose subcategory...</option>";
-	while($row = mysql_fetch_array($result)) {
-		printf("
-                 <option value='%s'>%s</option>
-                 ", $row['title'], $row['title']);
-	}
+	foreach($subcats as $subcat) {
+        echo '<option value="' . $subcat['title'] . '">' . $subcat['title'] . '</option>';
+    }
 	echo "</select>";
-	mysql_close($db);
 ?>

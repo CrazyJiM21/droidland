@@ -10,8 +10,8 @@
 			<div class="login">
 				<ul>
 					<?php
-						if(!empty($_SESSION)) {
-                            if (is_null($_SESSION['id'])) {
+						if(isset($_SESSION)) {
+                            if (empty($_SESSION['id'])) {
                                 echo '
 							<li><a id="go" rel="leanModal" name="signup" href="#loginform">Логин</a></li>
 							<li><a id="go" rel="leanModal" name="signup" href="#signup"></a></li>
